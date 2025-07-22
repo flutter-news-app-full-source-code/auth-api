@@ -1,24 +1,24 @@
-name: ht_auth_api
-description: Concrete API implementation of the HtAuthClient interface.
-repository: https://github.com/headlines-toolkit/ht-auth-api
+name: auth_api
+description: Concrete API implementation of the AuthClient interface.
+repository: https://github.com/flutter-news-app-full-source-code/auth-api
 publish_to: none
 
 environment:
   sdk: ^3.8.0
 
 dependencies:
-  ht_auth_client:
+  auth_client:
     git:
-      url: https://github.com/headlines-toolkit/ht-auth-client.git
-  ht_http_client:
+      url: https://github.com/flutter-news-app-full-source-code/auth-client.git
+  core:
     git:
-      url: https://github.com/headlines-toolkit/ht-http-client.git
-  ht_shared:
+      url: https://github.com/flutter-news-app-full-source-code/core.git
+  http_client:
     git:
-      url: https://github.com/headlines-toolkit/ht-shared.git
+      url: https://github.com/flutter-news-app-full-source-code/http-client.git
   logging: ^1.3.0
 
 dev_dependencies:
   mocktail: ^1.0.4
   test: ^1.25.8
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^9.0.0

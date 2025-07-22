@@ -1,13 +1,13 @@
-# ht_auth_api
+# auth_api
 
 ![coverage: 98%](https://img.shields.io/badge/coverage-98-green)
 [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 [![License: PolyForm Free Trial](https://img.shields.io/badge/License-PolyForm%20Free%20Trial-blue)](https://polyformproject.org/licenses/free-trial/1.0.0)
 
-Concrete API implementation of the `HtAuthClient` interface defined in
-`package:ht_auth_client`. This package provides the logic for interacting
+Concrete API implementation of the `AuthClient` interface defined in
+`package:auth_client`. This package provides the logic for interacting
 with a backend authentication service via HTTP requests using
-`package:ht_http_client`.
+`package:http_client`.
 
 ## Getting Started
 
@@ -15,19 +15,19 @@ Add this package to your `pubspec.yaml` dependencies:
 
 ```yaml
 dependencies:
-  ht_auth_api:
+  auth_api:
     git:
-      url: https://github.com/headlines-toolkit/ht-auth-api.git
+      url: https://github.com/flutter-news-app-full-source-code/auth-api.git
       # Optionally specify a ref (branch, tag, commit hash)
       # ref: main
 ```
 
-You also need to include `ht_http_client` and `ht_auth_client` (which this
+You also need to include `http_client` and `auth_client` (which this
 package depends on).
 
 ## Features
 
-Provides an `HtAuthApi` class implementing `HtAuthClient` with the following
+Provides an `AuthApi` class implementing `AuthClient` with the following
 capabilities:
 
 *   Requesting a sign-in code via email (`requestSignInCode`).
@@ -39,22 +39,22 @@ capabilities:
 
 ## Usage
 
-Instantiate `HtAuthApi` with a configured `HtHttpClient` instance:
+Instantiate `AuthApi` with a configured `HttpClient` instance:
 
 ```dart
-import 'package:ht_auth_api/ht_auth_api.dart';
-import 'package:ht_auth_client/ht_auth_client.dart';
-import 'package:ht_http_client/ht_http_client.dart';
+import 'package:auth_api/auth_api.dart';
+import 'package:auth_client/auth_client.dart';
+import 'package:http_client/http_client.dart';
 
 void main() async {
-  // Configure HtHttpClient (replace with your actual base URL and token logic)
-  final httpClient = HtHttpClient(
+  // Configure HttpClient (replace with your actual base URL and token logic)
+  final httpClient = HttpClient(
     baseUrl: 'https://your-api.com',
     tokenProvider: () async => 'YOUR_AUTH_TOKEN', // Or null if not logged in
   );
 
   // Create the auth API client
-  final HtAuthClient authClient = HtAuthApi(httpClient: httpClient);
+  final AuthClient authClient = AuthApi(httpClient: httpClient);
 
   // Listen to authentication state changes
   authClient.authStateChanges.listen((user) {
@@ -88,18 +88,21 @@ void main() async {
     // Example: Sign out
     // await authClient.signOut();
 
-  } on HtHttpException catch (e) {
+  } on HttpException catch (e) {
     print('Authentication error: $e');
   } finally {
     // Remember to dispose the client if it has resources like streams
-    // (In this specific implementation, HtAuthApi has a dispose method)
-    (authClient as HtAuthApi).dispose();
+    // (In this specific implementation, AuthApi has a dispose method)
+    (authClient as AuthApi).dispose();
   }
 }
 
 ```
 
-## License
 
-This package is licensed under the [PolyForm Free Trial](LICENSE). Please
-review the terms before use.
+
+## 🔑 Licensing
+
+This package is source-available and licensed under the [PolyForm Free Trial 1.0.0](LICENSE). Please review the terms before use.
+
+For commercial licensing options that grant the right to build and distribute unlimited applications, please visit the main [**Flutter News App - Full Source Code Toolkit**](https://github.com/flutter-news-app-full-source-code) organization.
