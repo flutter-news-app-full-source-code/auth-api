@@ -14,11 +14,13 @@ class MockLogger extends Mock implements Logger {}
 
 class MockUser extends Mock implements User {
   @override
-  Map<FeedActionType, UserFeedActionStatus> get feedActionStatus =>
-      Map.fromEntries(
-        FeedActionType.values.map(
-          (type) =>
-              MapEntry(type, const UserFeedActionStatus(isCompleted: false)),
+  Map<FeedDecoratorType, UserFeedDecoratorStatus> get feedDecoratorStatus =>
+      Map<FeedDecoratorType, UserFeedDecoratorStatus>.fromEntries(
+        FeedDecoratorType.values.map(
+          (type) => MapEntry(
+            type,
+            const UserFeedDecoratorStatus(isCompleted: false),
+          ),
         ),
       );
 }
@@ -30,11 +32,15 @@ final fakeUser = User(
   appRole: AppUserRole.standardUser,
   dashboardRole: DashboardUserRole.none,
   createdAt: DateTime.now(),
-  feedActionStatus: Map.fromEntries(
-    FeedActionType.values.map(
-      (type) => MapEntry(type, const UserFeedActionStatus(isCompleted: false)),
-    ),
-  ),
+  feedDecoratorStatus:
+      Map<FeedDecoratorType, UserFeedDecoratorStatus>.fromEntries(
+        FeedDecoratorType.values.map(
+          (type) => MapEntry(
+            type,
+            const UserFeedDecoratorStatus(isCompleted: false),
+          ),
+        ),
+      ),
 );
 final fakeAnonymousUser = User(
   id: 'anon-456',
@@ -42,11 +48,15 @@ final fakeAnonymousUser = User(
   appRole: AppUserRole.guestUser,
   dashboardRole: DashboardUserRole.none,
   createdAt: DateTime.now(),
-  feedActionStatus: Map.fromEntries(
-    FeedActionType.values.map(
-      (type) => MapEntry(type, const UserFeedActionStatus(isCompleted: false)),
-    ),
-  ),
+  feedDecoratorStatus:
+      Map<FeedDecoratorType, UserFeedDecoratorStatus>.fromEntries(
+        FeedDecoratorType.values.map(
+          (type) => MapEntry(
+            type,
+            const UserFeedDecoratorStatus(isCompleted: false),
+          ),
+        ),
+      ),
 );
 
 final fakeAuthSuccessResponse = AuthSuccessResponse(
